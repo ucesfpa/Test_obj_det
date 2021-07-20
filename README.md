@@ -72,7 +72,7 @@ This means that the camera is working now as webcam (notice there should be an i
 For more options follow the instructions given [here](https://github.com/jschmid1/gopro_as_webcam_on_linux).
 
 
-## 2. Clone YOLOv5 repository (credits to Ultralytics)
+## 2. Clone YOLOv5 repository (credits to [Ultralytics](https://github.com/ultralytics/yolov5))
 ```
 $ git clone https://github.com/ultralytics/yolov5.git
 $ cd yolov5
