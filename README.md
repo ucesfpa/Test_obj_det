@@ -1,6 +1,6 @@
 # Run real time object detection with YOLOv5 on live video feed from GoproHero 9 black.
 
-## Run the GoproHero 9 as webcam on Linux
+## 1. Run the GoproHero 9 as webcam on Linux
 ```
 $ sudo apt install ffmpeg v4l2loopback-dkms # installs dependencies
 $ sudo su -c "bash <(wget -qO- https://cutt.ly/PjNkrzq)" root # installs required scripts
@@ -59,20 +59,30 @@ Input #0, mpegts, from 'udp://@0.0.0.0:8554?overrun_nonfatal=1&fifo_size=5000000
 Stream mapping:
   Stream #0:0 -> #0:0 (h264 (native) -> rawvideo (native))
 [swscaler @ 0x5628ce85e140] deprecated pixel format used, make sure you did set range correctly
-```
-```ruby
+
 Output #0, video4linux2,v4l2, to '/dev/video42':
-```
-```
+
   Metadata:
     encoder         : Lavf58.29.100
     Stream #0:0: Video: rawvideo (I420 / 0x30323449), yuv420p, 1920x1080 [SAR 1:1 DAR 16:9], q=2-31, 745750 kb/s, 29.97 fps, 29.97 tbn, 29.97 tbc
     Metadata:
       encoder         : Lavc58.54.100 rawvideo
 ```
-
+This means that the camera is working now as webcam (notice there should be an icon on the camera screen confirming this).
 For more options follow the instructions given [here](https://github.com/jschmid1/gopro_as_webcam_on_linux).
 
 
-## Clone YOLOv5 repository (credits to Ultralytics)
-```$ git clone https://github.com/ultralytics/yolov5.git```
+## 2. Clone YOLOv5 repository (credits to Ultralytics)
+```
+$ git clone https://github.com/ultralytics/yolov5.git
+$ cd yolov5
+```
+## 3. Run the detection
+From the output of step 1 notice the output line:
+```ruby
+Output #0, video4linux2,v4l2, to '/dev/video42':
+```
+run detection selecting 42 as source:
+```
+$ python3 detect.py --source 42
+```
